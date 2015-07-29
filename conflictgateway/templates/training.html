@@ -1,0 +1,88 @@
+{% extends "articlebase.html" %}
+{% block title %}
+{{article.title}}
+{% endblock %}
+{% block description %}
+{{article.tagline}}
+{% endblock %}
+{% block leftcolumn %}
+<div class="titlelarge">
+    {{article.title}}
+</div>
+<div style="margin:10px 0px 10px 0px;">
+    <span class='st_facebook_large' displayText='Facebook'></span>
+    <span class='st_twitter_large' displayText='Tweet'></span>
+    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+    <span class='st_googleplus_large' displayText='Google +'></span>
+    <span class='st_pinterest_large' displayText='Pinterest'></span>
+</div>
+<div style="margin: 5px;">
+    {% load staticfiles %}
+    {% with 'img/articles/'|add:article.image as image_static %}
+       <img src="{% static image_static %}" alt="Training Material" style="width:100%;"/>
+    {% endwith %}
+</div>
+<div>
+    <div class="row">
+        <div class="col-md-2" style="margin-left:7px;">
+            <a href="{{article.link}}">
+            {% load staticfiles %}
+            {% with 'img/authors/'|add:article.authorimg as image_static %}
+               <p><img src="{% static image_static %}" alt="author" style="width:70px; margin: 20px 0px 0px 20px;"/></p>
+            {% endwith %}
+            <p class="authorname">{{article.author}}</p>
+            </a>
+            <hr style="margin: 5px 0px 5px 0px;">           
+        </div>
+        <div class="col-md-9">
+            <span class="authorname" style="float:right;"><i>image: {{article.imgcredit}}</i></p></span> 
+            <div class="articlebody" style="margin-top:18px;">
+                <p class="articlecontent"><b>{{article.tagline |safe}}</b></p>
+                <p class="articlecontent">{{article.body |safe}}</span>
+                <hr style="margin: 10px 0px 10px 0px;">
+                <p class="badge">{{article.tags}}</p>
+                <hr style="margin: 4px 0px 10px 0px;">
+           </div>                
+           <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                        var disqus_shortname = 'incerto'; // required: replace example with your forum shortname
+
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments.</a></noscript>
+               <hr style="margin: 4px 0px 10px 0px;">
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block rightcolumn %}
+{% if article_hot %}
+         {% for article in article_hot%}
+             <div class="col-md-12 well articlewell">
+                <div class="boxtitle">
+                    <a href="/{{article.urlsection}}/{{article.title_slug}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="/{{article.urlsection}}/{{article.title_slug}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="/{{article.urlsection}}/{{article.title_slug}}"> >></a>
+                </div>
+            </div>
+        {% endfor %}
+{% endif %}
+{% endblock %}

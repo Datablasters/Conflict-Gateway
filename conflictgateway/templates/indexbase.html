@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block layout %}
+ <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+           {% load staticfiles %}
+           <a class="navbar-branding" style="width:80%" href="/"><img src="{% static 'img/cglogo.png' %}" style="max-width: 90%; margin-top:5px;" alt="conflict gateway"/></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="navbarlifirst" id="newstab"><a href="/news">News</a></li>
+            <li class="navbarli" id="articlestab"><a href="/features">Features</a></li>
+            <li class="navbarli" id="jobstab"><a href="/jobs">Jobs</a></li>
+            <li class="navbarli" id="trainingtab"><a href="/training">Training Material</a></li>
+            <li class="navbarli" id="directorytab"><a href="/directory">Directory</a></li>
+          </ul>
+          <ul id="socialbar" class="nav navbar-nav navbar-right">
+            <li>
+                {% load staticfiles %}
+                <a href="https://www.facebook.com/conflictgateway" style="padding:7px 5px 0px 5px;"><img src="{% static 'img/facebook.png' %}" alt="follow us"/></a>
+            </li>
+            <li>
+                {% load staticfiles %}
+                <a href="https://twitter.com/conflictgateway" style="padding:7px 5px 0px 5px;"><img src="{% static 'img/twitter.png' %}" alt="follow us"/></a>
+            </li>
+            <li>
+                {% load staticfiles %}
+                <a href="http://www.reddit.com/r/mediation" style="padding:7px 5px 0px 5px;"><img src="{% static 'img/reddit.png'%}" alt="follow us"/></a>
+            </li>
+            <li>
+                {% load staticfiles %}
+                <a href="http://answer.tv/mediation" style="padding:7px 5px 0px 5px;"><img src="{% static 'img/answertv.png' %}" alt="follow us"/></a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+ <!-- /Fixed navbar -->
+ <!-- Main Body -->
+    <div class="container">
+        <div class="row" style="margin-top:60px; padding-bottom: 10px;">
+             <div class="col-md-12 headerad" id="headerad">
+                 <!-- Header Advertisement -->
+                 <div style="" margin: 0 auto;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- Header Responsive -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-9468404345387555"
+                                 data-ad-slot="3574442316"
+                                 data-ad-format="auto"></ins>
+                     <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                     </script>
+                 </div>
+             </div>
+        </div>
+        {% block indexcontent %}
+        {% endblock %}
+    </div>
+ <!-- /Main Body -->
+{% endblock %}
+

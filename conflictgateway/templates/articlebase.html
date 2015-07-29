@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block layout %}
+ <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+           {% load staticfiles %}
+           <a class="navbar-branding" style="width:80%" href="/"><img src="{% static 'img/cglogo.png' %}" alt="conflict gateway" style="max-width: 90%; margin-top:5px;"/></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="navbarlifirst" id="News"><a href="/news">News</a></li>
+            <li class="navbarli" id="Articles"><a href="/features">Features</a></li>
+            <li class="navbarli" id="Jobs"><a href="/jobs">Jobs</a></li>
+            <li class="navbarli" id="Training"><a href="/training">Training Material</a></li>
+            <li class="navbarli" id="Directory"><a href="/directory">Directory</a></li>
+          </ul>
+          <ul id="socialbar" class="nav navbar-nav navbar-right">
+            <li>
+                {% load staticfiles %}
+                <a href="https://www.facebook.com/conflictgateway" style="padding:7px 5px 0px 5px;"><img src="{% static 'img/facebook.png' %}" alt="follow us"/></a>
+            </li>
+            <li>
+                {% load staticfiles %}
+                <a href="https://twitter.com/conflictgateway" style="padding:7px 5px 0px 5px;"><img src="{% static 'img/twitter.png' %}" alt="follow us"/></a>
+            </li>
+             <li>
+                {% load staticfiles %}
+                <a href="http://www.reddit.com/r/mediation" style="padding:7px 5px 0px 5px;"><img src="{% static 'img/reddit.png'%}" alt="follow us"/></a>
+            </li>
+            <li>
+                {% load staticfiles %}
+                <a href="http://answer.tv/mediation" style="padding:7px 5px 0px 5px;"><img src="{% static 'img/answertv.png' %}" alt="follow us"/></a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+ <!-- /Fixed navbar -->
+ <!-- Main Body -->
+    <div class="mainbody span12">
+                 <!-- /Header Advertisement -->
+                 <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 headerad" id="headerad">
+                            <!-- Header Advertisement -->
+                                <div style="" margin: 0 auto;">
+                                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                    <!-- Header Responsive -->
+                                    <ins class="adsbygoogle"
+                                         style="display:block"
+                                         data-ad-client="ca-pub-9468404345387555"
+                                         data-ad-slot="3574442316"
+                                         data-ad-format="auto"></ins>
+                                    <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                    </script>
+                                </div>
+                        </div>
+                    </div>
+                 <!-- Breadcrumbs -->
+                 <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 breadcrumbs" style="margin-top:10px;">
+                            <span class="breadcrumbsheader">
+                            {{article.articletype}}
+                            </span>
+                            <div class="breadcrumbsfollow">
+                                <div style="float:right; margin: 0px 10px 0px 0px;">
+                                    <div style="float:right; margin-left:10px;">
+                                        <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffacebook.com%2Fconflictgateway&amp;width=100&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=316881331837181" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+                                    </div>
+                                    <div style="float:right;">
+                                        <a href="https://twitter.com/conflictgateway" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @conflictgateway</a>
+                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                    </div>
+                                </div>
+                                <div id="followprompt" style="float:right; margin:5px 8px 0px 0px;"> Follow > </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 <!-- /Breadcrumbs -->
+                 <!-- Two Coloumn Layout -->
+                 <div class="container">
+                    <div class="row" style="background-color:#fff;">
+                        <div class="col-md-8 leftcoloumn" id="leftco">
+                            {% block leftcolumn %}
+                            {% endblock %}
+                        </div>
+                        <div class="col-md-4 rightcoloumn" id="rightco">  
+                            <div class="sidebaradvert">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- Sidebar Responsive -->
+                                <ins class="adsbygoogle"
+                                     style="display:block"
+                                     data-ad-client="ca-pub-9468404345387555"
+                                     data-ad-slot="6527908717"
+                                     data-ad-format="auto"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>  
+                            <div>
+                            <hr style="margin: 10px 0px 10px 0px;">
+                            <div class="breadcrumbsheader" style="margin: 0px 0px 10px 3px;">
+                            What's Hot
+                            </div>
+                            {% block rightcolumn %}
+                            {% endblock %}
+                            </div>     
+                        </div>
+                    </div>
+                 </div>
+                 <!-- /Two Coloumn Layout -->
+                 <!-- Footer -->
+                 <div class="container">
+                    <div class="row">
+                                <div class="footer" id="footer">
+                                        <div class="row" style="margin:0px;">
+                                            <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                                                <h3> Visit </h3>
+                                                <ul>
+                                                    <li> <a href="http://www.mediate.com"> Mediate </a> </li>
+                                                    <li> <a href="http://www.beyondintractability.org/"> Beyond Intractability </a> </li>
+                                                    <li> <a href="http://www.nfm.org.uk/"> NFM </a> </li>
+                                                    <li> <a href="http://www.cedr.com/"> CEDR </a> </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                                                <h3> Site </h3>
+                                                <ul>
+                                                    <li> <a href="/news"> News </a> </li>
+                                                    <li> <a href="/articles"> Articles </a> </li>
+                                                    <li> <a href="/jobs"> Jobs </a> </li>
+                                                    <li> <a href="/training"> Training Material </a> </li>
+                                                    <li> <a href="/directory"> Directory </a> </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                                                <h3> Partners </h3>
+                                                <ul>
+                                                    <li> <a href="http://answer.tv"> Answer.tv </a> </li>
+                                                    <li> <a href="http://nhstools.net"> NHSTools </a> </li>
+                                                    <li> <a href="http://incerto.net"> Incerto </a> </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                                                <h3> About </h3>
+                                                <ul>
+                                                    <li> <a href="/articles/about"> About </a> </li>
+                                                    <li> <a href="/articles/terms"> Terms </a> </li>
+                                                    <li> <a href="/articles/privacy-policy"> Privacy </a> </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                                                <h3> Newsletter </h3>
+                                                <ul>
+                                                    <li>
+                                                        <div class="input-append newsletter-box text-center">
+                                                            <input type="text" id="emailboxer" class="full text-center newsletteremail" style="height:30px;" placeholder="Email ">
+                                                            <button class="btn bg-gray" type="button" onclick="subscribeNewsletter()" data-toggle="modal" data-target="#newslettermodal"> <h2 style="margin: 0px;">Sign up! <i class="fa fa-long-arrow-right"> </i></h2> </button>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <ul class="socialfooter">
+                                                     <li>
+                                                        {% load staticfiles %}
+                                                        <a href="https://www.facebook.com/conflictgateway" style="padding:7px 5px 0px 5px; float:left;"><img src="{% static 'img/facebook.png' %}" alt="follow us"/></a>
+                                                    </li>
+                                                    <li>
+                                                        {% load staticfiles %}
+                                                        <a href="https://twitter.com/conflictgateway" style="padding:7px 5px 0px 5px; float:left;"><img src="{% static 'img/twitter.png' %}" alt="follow us"/></a>
+                                                    </li>
+                                                     <li>
+                {% load staticfiles %}
+                <a href="http://www.reddit.com/r/mediation" style="padding:7px 5px 0px 5px; float:left;"><img src="{% static 'img/reddit.png'%}" alt="follow us"/></a>
+            </li>
+            <li>
+                {% load staticfiles %}
+                <a href="http://answer.tv/mediation" style="padding:7px 5px 0px 5px; float:left;"><img src="{% static 'img/answertv.png' %}" alt="follow us"/></a>
+            </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--/.row--> 
+                                </div>
+                                <!--/.footer-->
+                                <div class="footer-bottom">
+                                    <div class="container">
+                                        <p class="pull-left authorname"> Copyright © Conflict Gateway 2015. All right reserved.</p>
+                                        <div class="pull-right">
+                                        <p class="pull-left authorname"> Website by <a href="http://incerto.net" alt="Incerto">Incerto</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.footer-bottom--> 
+                    </div>
+                 </div>
+                 <!-- /Footer -->
+            </div>
+        </div>
+    </div>
+ <!-- /Main Body -->
+ <!-- Navbar active tab selector -->
+<script>
+    $("#{{article.articletype}}").addClass('active');
+</script>
+<script>
+			// Newsletter subscribe function.
+			function subscribeNewsletter() {
+			var emailid = $('#emailboxer').val();
+			$.post("/newsletter/", {email: emailid});
+			$('#emailboxer').val('');
+
+			}
+</script>
+<!-- Newsletter Modal -->
+<div class="modal fade" id="newslettermodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><b><i class="fa fa-envelope"></i> Confirmation Successful!</b></h4>
+      </div>
+      <div class="modal-body">
+        You are now signed up for our newsletter, and will recieve our next issue. 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+            /* always assume on smaller screen first */
+            #followprompt {
+                display:none;
+            }
+            /* if screen size gets wider than 725 */
+            @media screen and (min-width:725px){
+                #followprompt {
+                    display:block;
+                }
+            }
+</style>
+<style>
+            /* always assume on smaller screen first */
+            #headerad {
+                margin:60px 0px 0px 0px;
+            }
+            /* if screen size gets wider than 725 */
+            @media screen and (min-width:725px){
+                #headerad {
+                    margin:60px 0px 0px 15px;
+                }
+            }
+</style>
+{% endblock %}
+

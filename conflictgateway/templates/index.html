@@ -1,0 +1,153 @@
+{% extends "indexbase.html" %}
+{% block title %}
+Mediation News, Jobs & Training Materials | Conflict Gateway
+{% endblock %}
+{% block description %}
+Mediation & Conflict Resolution News, Articles, Jobs and Training Materials. View the latest resources on Mediation, ADR, Conflict Resolution, Community Mediation, Divorce Mediation and more...
+{% endblock %}
+{% block indexcontent %}
+<div id="container">
+{% if contents_list %}
+        {% load endless %}
+        {% paginate 50 contents_list %}
+        {% for article in contents_list%}
+            {% if article.articletype|stringformat:"s" == "Articles" %}
+            <div class="first well articlewell" style="width:277px;">
+                <div class="boxtitle">
+                    <a href="/articles/{{article.title_slug}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="/articles/{{article.title_slug}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="/articles/{{article.title_slug}}"> >></a>
+                </div>
+                <div class="articleboxfooter">
+                    <span><i class="fa fa-tags" style="margin:0px 5px 10px 0px;"></i> {{article.tags}} <i class="fa fa-calendar" style="margin:0px 5px 10px 15px;"></i> {{article.created}}</span>
+                </div>
+            </div>
+            {% endif %}
+
+
+            {% if article.articletype|stringformat:"s" == "Training" %}
+              <div class="first well articlewell" style="width:277px;">
+                <div class="boxtitle">
+                    <a href="/training/{{article.title_slug}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="/training/{{article.title_slug}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="/training/{{article.title_slug}}"> >></a>
+                </div>
+                <div class="articleboxfooter">
+                    <span><i class="fa fa-tags" style="margin:0px 5px 10px 0px;"></i> {{article.tags}} <i class="fa fa-calendar" style="margin:0px 5px 10px 15px;"></i> {{article.created}}</span>
+                </div>
+            </div>
+           {% endif %}
+            {% if article.articletype|stringformat:"s" == "News" %}
+             <div class="first well articlewell" style="width:277px;">
+                <div class="boxtitle">
+                    <a href="{{article.link}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="{{article.link}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="{{article.link}}"> >></a>
+                </div>
+                <div class="articleboxfooter">
+                    <span><i class="fa fa-globe" style="margin:0px 5px 10px 0px;"></i> {{article.website}} <i class="fa fa-calendar" style="margin:0px 5px 10px 15px;"></i> {{article.created}}</span>
+                </div>
+            </div>
+           {% endif %}
+
+            {% if article.articletype|stringformat:"s" == "Jobs" %}
+             <div class="first well articlewell" style="width:277px;">
+                <div class="boxtitle">
+                    <a href="/jobs/{{article.title_slug}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="/jobs/{{article.title_slug}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="/jobs/{{article.title_slug}}"> >></a>
+                </div>
+                <div class="articleboxfooter">
+                    <span><i class="fa fa-globe" style="margin:0px 5px 10px 0px;"></i> {{article.location}}</span><span><i class="fa fa-dollar" style="margin:0px 5px 10px 10px;"></i> {{article.salary}} </span><span><i class="fa fa-calendar" style="margin:0px 5px 10px 15px;"></i> {{article.created}} {{article.articletype}}</span>
+                </div>
+            </div>
+             {% endif %}
+        {% endfor %}
+        </div>
+{% endif %}
+</div>
+<div class="pag_box" style="width:100%; float:left;">
+    {% get_pages %}
+    {{ pages.next }}
+</div>
+<script type="text/javascript">
+    var container = document.querySelector('#container');
+    var msnry;
+    // initialize Masonry after all images have loaded
+    imagesLoaded( container, function() {
+    msnry = new Masonry( container, {
+     // options
+     itemSelector: '.first',
+     "gutter": 10,
+     negativeMargin: 650,
+     });
+    });
+
+    var ias = $.ias({
+      container: "#container",
+      item: ".first",
+      pagination: ".pag_box",
+      next: ".endless_page_link",
+      delay: 0,
+
+    });
+
+    ias.on('render', function(items) {
+      $(items).css({ opacity: 0 });
+    });
+
+    ias.on('rendered', function(items) {
+      msnry.appended(items);
+    });
+
+</script>
+{% endblock %}
+

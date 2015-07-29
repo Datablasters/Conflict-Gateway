@@ -1,0 +1,181 @@
+{% extends "indexbase.html" %}
+{% block title %}
+Conflict Gateway
+{% endblock %}
+{% block description %}
+Mediation & Conflict Resolution News, Articles, Jobs and Training Materials. View the latest resources on Mediation, ADR, Conflict Resolution, Community Mediation, Divorce Mediation and more...
+{% endblock %}
+{% block indexcontent %}
+<div class="col-md-3" id="news_column">
+{% if news_list %}
+        {% load endless %}
+        {% paginate news_list %}
+        {% for article in news_list%}
+             <div class="col-md-12 well articlewell first"  id="newscolumns" style="width:277px;">
+                <div class="boxtitle">
+                    <a href="{{article.link}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="{{article.link}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="{{article.link}}"> >></a>
+                </div>
+                <div class="articleboxfooter">
+                    <span><i class="fa fa-globe" style="margin:0px 5px 10px 0px;"></i> {{article.website}} <i class="fa fa-calendar" style="margin:0px 5px 10px 15px;"></i> {{article.created}}</span>
+                </div>
+            </div>   
+        {% endfor %}
+{% endif %}
+    <div class="news_pag_box" style="width:100%; float:left;">
+        {% get_pages %}
+        {{ pages.next }}
+    </div>
+</div>
+<div class="col-md-3" id="articles_column">
+{% if article_list %}
+        {% load endless %}
+        {% paginate article_list %}
+        {% for article in article_list%}
+             <div class="col-md-12 well articlewell second" style="width:277px;">
+                <div class="boxtitle">
+                    <a href="/articles/{{article.title_slug}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="/articles/{{article.title_slug}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="/articles/{{article.title_slug}}"> >></a>
+                </div>
+                <div class="articleboxfooter">
+                    <span><i class="fa fa-tags" style="margin:0px 5px 10px 0px;"></i> {{article.tags}} <i class="fa fa-calendar" style="margin:0px 5px 10px 15px;"></i> {{article.created}}</span>
+                </div>
+            </div>   
+        {% endfor %}
+{% endif %}
+    <div class="articles_pag_box" style="width:100%; float:left;">
+        {% get_pages %}
+        {{ pages.next }}
+    </div>
+</div>
+<div class="col-md-3" id="jobs_column">
+{% if jobs_list %}
+        {% load endless %}
+        {% paginate jobs_list %}
+        {% for article in jobs_list%}
+             <div class="col-md-12 well articlewell third" style="width:277px;">
+                <div class="boxtitle">
+                    <a href="/jobs/{{article.title_slug}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="/jobs/{{article.title_slug}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="/jobs/{{article.title_slug}}"> >></a>
+                </div>
+                <div class="articleboxfooter">
+                    <span><i class="fa fa-globe" style="margin:0px 5px 10px 0px;"></i> {{article.location}}</span><span><i class="fa fa-dollar" style="margin:0px 5px 10px 10px;"></i> {{article.salary}} </span><span><i class="fa fa-calendar" style="margin:0px 5px 10px 15px;"></i> {{article.created}}</span>
+                </div>
+            </div>
+        {% endfor %}
+{% endif %}
+    <div class="jobs_pag_box" style="width:100%; float:left;">
+        {% get_pages %}
+        {{ pages.next }}
+</div>
+</div>
+<div class="col-md-3" id="trainings_column">
+{% if training_list %}
+        {% load endless %}
+        {% paginate training_list %}
+        {% for article in training_list%}
+             <div class="col-md-12 well articlewell fourth" style="width:277px;">
+                <div class="boxtitle">
+                    <a href="/training/{{article.title_slug}}">
+                    {{article.title}}
+                    </a>
+                </div>
+                <div style="margin-top:5px;">
+                    <a href="/training/{{article.title_slug}}">
+                        {% load staticfiles %}
+                        {% with 'img/thumbs/'|add:article.thumbnail as image_static %}
+                           <img src="{% static image_static %}" alt="{{article.title}}" style="width:100%;"/>
+                        {% endwith %}
+                    </a>
+                </div>
+                <hr style="margin: 10px 0px 5px 0px;">
+                <div class="artilecontext">
+                {{article.tagline}} ...<a href="/training/{{article.title_slug}}"> >></a>
+                </div>
+                <div class="articleboxfooter">
+                    <span><i class="fa fa-tags" style="margin:0px 5px 10px 0px;"></i> {{article.tags}} <i class="fa fa-calendar" style="margin:0px 5px 10px 15px;"></i> {{article.created}}</span>
+                </div>
+            </div>   
+        {% endfor %}
+{% endif %}
+    <div class="trainings_pag_box" style="width:100%; float:left;">
+        {% get_pages %}
+        {{ pages.next }}
+    </div>
+</div>
+<script type="text/javascript">
+    var iasnews$("#newscolumns").jQuery.ias({
+      container: "#news_column",
+      item: ".first",
+      pagination: ".news_pag_box",
+      next: ".endless_page_link",
+    });
+    </script>
+    <script type="text/javascript">
+    var iasjobs = jQuery.ias({
+     container:  '#jobs_column',
+     item:       '.third',
+     pagination: '.jobs_pag_box',
+     next:       '.endless_page_link'
+    });
+</script>
+    <script type="text/javascript">
+     var iasarticles = jQuery.ias({
+     container:  '#articles_column',
+     item:       '.second',
+     pagination: '.articles_pag_box',
+     next:       '.endless_page_link',
+     });
+
+     var iastraining = jQuery.ias({
+     container:  '#trainings_column',
+     item:       '.fourth',
+     pagination: '.trainings_pag_box',
+     next:       '.endless_page_link',
+     });
+</script>
+{% endblock %}
+
+
+
+
+
