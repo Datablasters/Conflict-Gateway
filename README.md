@@ -1,3 +1,5 @@
+## PLEASE NOTE: This project is no longer maintained.
+
 # Conflict-Gateway
 A social Portal built in Django designed to bring together all of the Conflict Resolution &amp; Mediation resources on the internet.
 
